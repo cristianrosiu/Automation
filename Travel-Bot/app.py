@@ -1,9 +1,10 @@
 from flask import Flask, request
 from pymessenger.bot import Bot
+import os
 
 app = Flask(__name__)
-ACCESS_TOKEN = 'EAAO0PutWzFoBAFzK6e9a3mFJJszUrNNHFfp5pEi1tdSqyL9M9Hc88pBWEZBKRsTKrroKlWhqKvb2grBzTAQz4iqxxCz6BXoYOcb8BZAVrmYXDqNeN28TDx2d3ps8g2ZC2j1vYxQ9BiikTx8FIi2alKjhqVHr8wEwU2vNwhGwNboZAnHJxBr1'
-VERIFY_TOKEN = 'TESTINGTOKEN'
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot(ACCESS_TOKEN)
 
 commands_list = ["!trip", "!buget", "!location"]
