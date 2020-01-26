@@ -32,7 +32,6 @@ def receive_message():
                         command = message['message'].get('text')
                         response_sent_text = get_message(command)
                         send_message(recipient_id, response_sent_text)
-                        command = ""
 
     return "Message Processed"
 
