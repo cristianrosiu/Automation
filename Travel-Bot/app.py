@@ -7,15 +7,23 @@ ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot(ACCESS_TOKEN)
 
-commands_list = ["!trip", "!buget", "!location"]
+commands_list = ["!trip", "!budget", "!location", "!trains", "!help"]
 DESTINATION = "Groningen, Netherlands"
+
+user_list = {}
+valid_names = ["Cristian", "Roxana", "Eli", "Angi"]
+
+
+class User(object):
+    def __init__(self, id):
+        self.id = id
+        self.name = "Unknown"
+        self.flight = "Unknown"
+        self.return_flight = "Unknown"
 
 
 @app.route('/', methods=['GET', 'POST'])
 def receive_message():
-
-
-
     if request.method == 'GET':
         # Before allowing people to message your bot, Facebook has implemented a verify token
         # that confirms all requests that your bot receives came from Facebook.
@@ -54,10 +62,21 @@ def get_message(command):
 
     if command == '!trip':
         response = DESTINATION
-    elif command == '!buget':
-        response = "Bugetul inca nu a fost stabilit."
+    elif command == '!help':
+        response = "Comenzi TravelBot:\n" \
+                   "!trip, !budget,!location,!trains"
+    elif command == '!budget':
+        response = "Buget Olanda Aproximat(de persoana):\n" \
+                   "Transport: 70 Euro\n" \
+                   "    -Transport Groningen\n" \
+                   "    -Transport Haga + Amsterdam\n" \
+                   "    -Transport Aeroport\n" \
+                   "Mancare:30 Euro"
     elif command == '!location':
         response = 'https://goo.gl/maps/Fv7bADuswqeYoEvv7'
+    elif command == '!trains':
+        response = "Puteti cumpara biletele de tren de aici:\n" \
+                   "https://www.treinreiziger.nl/goedkope-enkele-reis-naar-schiphol-rotterdam-en-eindhoven/"
 
     return response
 
