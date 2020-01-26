@@ -54,7 +54,7 @@ def get_message(command):
     elif command == '!help':
         response = "Comenzi TravelBot:\n" \
                    "!trip, !budget,!location,!trains"
-    elif command == '!buget':
+    elif command == '!budget':
         response = "Buget Olanda Aproximat(de persoana):\n" \
                    "Transport: 70 Euro\n" \
                    "    -Transport Groningen\n" \
